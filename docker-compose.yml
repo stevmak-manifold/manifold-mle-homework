@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+    pg-airbnb:
+        build:
+            context: ./db
+            dockerfile: Dockerfile
+        ports:
+            - 5437:5432
+        expose:
+            - 5437
+        volumes:
+            - pg-airbnb-data:/var/lib/postgresql/data:cached
+        mem_reservation: 16384M
+        cpu_count: 3
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+
+volumes:
+    pg-airbnb-data:
+        driver: local
+        driver_opts:
+            type: 'none'
+            o: 'bind'
+            device: '/tmp/airbnb/pg/data'

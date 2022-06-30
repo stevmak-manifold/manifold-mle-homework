@@ -1,0 +1,6 @@
+.DS_store
+notebooks/.ipynb_checkpoints/
+.env
+.idea/
+.python-version
+LightGBM/

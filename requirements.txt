@@ -1,0 +1,17 @@
+numpy
+pandas
+pytest
+jupyterlab
+jupyterlab-vim
+matplotlib
+scipy
+sklearn
+statsmodels
+seaborn
+tabulate
+SQLAlchemy
+psycopg2-binary
+sqlparse
+click
+python-dotenv
+stringcase
