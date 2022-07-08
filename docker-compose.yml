@@ -1,21 +1,34 @@
 version: '3.8'
 
+# services:
+#     pg-airbnb:
+#         build:
+#             context: ./db
+#             dockerfile: Dockerfile
+#         ports:
+#             - 5437:5432
+#         expose:
+#             - 5437
+#         volumes:
+#             - pg-airbnb-data:/var/lib/postgresql/data:cached
+#         mem_reservation: 16384M
+#         cpu_count: 3
+#         environment:
+#             - POSTGRES_USER=postgres
+#             - POSTGRES_PASSWORD=postgres
+
 services:
-    pg-airbnb:
+    dev:
         build:
-            context: ./db
+            context: ./
             dockerfile: Dockerfile
         ports:
-            - 5437:5432
-        expose:
-            - 5437
+            - "8888:8888"
         volumes:
-            - pg-airbnb-data:/var/lib/postgresql/data:cached
-        mem_reservation: 16384M
-        cpu_count: 3
-        environment:
-            - POSTGRES_USER=postgres
-            - POSTGRES_PASSWORD=postgres
+            - .:/app
+        env_file: .env
+        entrypoint: "bash -c 'cd /app && jupyter lab --port=8888 --ip=0.0.0.0 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password='' && /bin/bash'"
+        stdin_open: true
 
 volumes:
     pg-airbnb-data:

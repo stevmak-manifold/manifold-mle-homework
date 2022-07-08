@@ -4,3 +4,6 @@ notebooks/.ipynb_checkpoints/
 .idea/
 .python-version
 LightGBM/
+*.swp
+data/
+db/
